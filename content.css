@@ -1,0 +1,82 @@
+.ghsc-popup {
+  position: absolute;
+  z-index: 10000;
+  max-width: 560px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 4px;
+  border: 1px solid var(--borderColor-default, var(--color-border-default, #d0d7de));
+  border-radius: 6px;
+  background: var(--overlay-bgColor, var(--color-canvas-overlay, #fff));
+  box-shadow: var(--shadow-floating-small, 0 8px 24px rgba(140, 149, 159, 0.2));
+  color: var(--fgColor-default, var(--color-fg-default, #1f2328));
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.ghsc-item {
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ghsc-item:hover,
+.ghsc-selected {
+  background: var(--control-transparent-bgColor-hover, var(--color-action-list-item-default-hover-bg, #f6f8fa));
+}
+
+.ghsc-selected {
+  background: var(--control-transparent-bgColor-selected, var(--color-action-list-item-default-selected-bg, #eaeef2));
+}
+
+.ghsc-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.ghsc-command {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ghsc-command mark {
+  background: none;
+  color: var(--fgColor-accent, var(--color-accent-fg, #0969da));
+}
+
+.ghsc-workflow {
+  margin-left: auto;
+  color: var(--fgColor-muted, var(--color-fg-muted, #656d76));
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 45%;
+}
+
+.ghsc-desc {
+  margin-top: 2px;
+  color: var(--fgColor-muted, var(--color-fg-muted, #656d76));
+  font-size: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ghsc-status {
+  padding: 8px;
+  color: var(--fgColor-muted, var(--color-fg-muted, #656d76));
+}
+
+.ghsc-error {
+  color: var(--fgColor-danger, var(--color-danger-fg, #d1242f));
+}
+
+/* Hide GitHub's built-in slash menu while ours is showing. */
+.ghsc-suppress .js-slash-command-menu {
+  display: none !important;
+}

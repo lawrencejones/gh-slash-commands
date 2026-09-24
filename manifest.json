@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub slash command autocomplete",
+  "version": "0.1.0",
+  "description": "Autocompletes the /commands that a repository's GitHub Actions workflows respond to, in PR and issue comment boxes.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://github.com/*", "https://api.github.com/*"],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["parser.js", "fetcher.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "128": "icon.png"
+  }
+}
