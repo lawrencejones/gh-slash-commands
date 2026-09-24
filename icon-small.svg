@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Simplified variant for 16 and 32px: bigger bubble, heavier slash, one bar, no fade. -->
+  <rect width="128" height="128" rx="28" fill="#0969da"/>
+  <path d="M30 16 h68 a16 16 0 0 1 16 16 v48 a16 16 0 0 1 -16 16 h-40 l-24 20 v-20 h-4 a16 16 0 0 1 -16 -16 v-48 a16 16 0 0 1 16 -16 z" fill="#ffffff"/>
+  <path d="M62 30 L44 82" stroke="#0969da" stroke-width="16" stroke-linecap="round"/>
+  <rect x="70" y="48" width="30" height="16" rx="8" fill="#0969da"/>
+</svg>

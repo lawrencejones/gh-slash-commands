@@ -87,3 +87,10 @@ Layout:
 - `fetcher.js` – lists and downloads workflow files, caches results in `chrome.storage`
 - `content.js` / `content.css` – the popup
 - `options.*` – token, cache interval, cache viewer
+- `icon.svg`, `icon-small.svg` – icon sources; the small variant has heavier shapes for 16
+  and 32px. Regenerate `icons/` with `rsvg-convert` (`brew install librsvg`):
+
+  ```bash
+  for s in 48 128; do rsvg-convert -w $s -h $s icon.svg -o icons/icon-$s.png; done
+  for s in 16 32; do rsvg-convert -w $s -h $s icon-small.svg -o icons/icon-$s.png; done
+  ```

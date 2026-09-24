@@ -1,7 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <rect width="128" height="128" rx="24" fill="#24292f"/>
-  <text x="64" y="86" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="72" font-weight="700" fill="#ffffff">/</text>
-  <rect x="82" y="30" width="16" height="4" rx="2" fill="#58a6ff"/>
-  <rect x="82" y="40" width="26" height="4" rx="2" fill="#58a6ff"/>
-  <rect x="82" y="50" width="20" height="4" rx="2" fill="#58a6ff"/>
+  <!-- Background: GitHub accent blue, rounded square -->
+  <rect width="128" height="128" rx="28" fill="#0969da"/>
+  <!-- Speech bubble: a comment -->
+  <path d="M34 22 h60 a14 14 0 0 1 14 14 v40 a14 14 0 0 1 -14 14 h-38 l-20 18 v-18 h-2 a14 14 0 0 1 -14 -14 v-40 a14 14 0 0 1 14 -14 z" fill="#ffffff"/>
+  <!-- The slash being typed -->
+  <path d="M60 36 L44 76" stroke="#0969da" stroke-width="11" stroke-linecap="round"/>
+  <!-- Completion text: one solid word, one faded -->
+  <rect x="68" y="42" width="30" height="9" rx="4.5" fill="#0969da"/>
+  <rect x="68" y="61" width="22" height="9" rx="4.5" fill="#0969da" opacity="0.35"/>
 </svg>
