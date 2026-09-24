@@ -67,25 +67,45 @@
     return paras.filter(Boolean);
   }
 
-  // Also catch `# comment` lines anywhere in the file that describe the command, such
-  // as "# Only run if the comment is `/gen-api`".
-  function commentLinesMentioning(text, command) {
-    const out = [];
+  // True when `text` mentions the command as a whole word, so `/approve` does not match
+  // a comment about `/approve-bypass`.
+  function mentions(text, command) {
+    const escaped = command.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return new RegExp(`${escaped}(?![\\w-])`).test(text);
+  }
+
+  // Every `#` comment paragraph in the file: runs of consecutive comment lines, split on
+  // blank `#` lines. Mid-file comments such as "# Only run if the comment is `/gen-api`"
+  // often describe a command better than the header does, and joining the run means a
+  // sentence wrapped over several lines comes back whole.
+  function commentParagraphs(text) {
+    const paras = [];
+    let cur = [];
+    const flush = () => {
+      if (cur.length) paras.push(cur.join(" ").replace(/\s+/g, " ").trim());
+      cur = [];
+    };
     for (const line of text.split("\n")) {
       const t = line.trim();
-      if (!t.startsWith("#")) continue;
-      if (t.includes(command)) out.push(t.replace(/^#\s?/, "").trim());
+      if (!t.startsWith("#")) {
+        flush();
+        continue;
+      }
+      const body = t.replace(/^#\s?/, "");
+      if (body.trim() === "") flush();
+      else cur.push(body);
     }
-    return out;
+    flush();
+    return paras.filter(Boolean);
   }
 
   function describe(text, command, paras) {
-    // Prefer a header paragraph that names the command, then any comment line that
+    // Prefer a header paragraph that names the command, then any comment paragraph that
     // does, then the first header paragraph.
-    const named = paras.find((p) => p.includes(command));
+    const named = paras.find((p) => mentions(p, command));
     if (named) return trimDescription(named);
-    const lines = commentLinesMentioning(text, command);
-    if (lines.length) return trimDescription(lines[0]);
+    const anywhere = commentParagraphs(text).find((p) => mentions(p, command));
+    if (anywhere) return trimDescription(anywhere);
     return paras.length ? trimDescription(paras[0]) : "";
   }
 

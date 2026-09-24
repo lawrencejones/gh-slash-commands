@@ -104,6 +104,30 @@ jobs:
   assert.equal(cmd.description, "Comment `/gen-api` to trigger a run.");
 });
 
+test("description does not borrow a comment about a longer command", () => {
+  const text = `
+# Handles /approve. NB /approve-bypass belongs to approve-bot.
+on: issue_comment
+jobs:
+  a:
+    if: contains(github.event.comment.body, '/approve')
+    steps:
+      - run: echo # only /approve-bypass is documented on this line
+`;
+  const [cmd] = extractSlashCommands([{ path: "a.yml", text }]);
+  assert.equal(cmd.command, "/approve");
+  assert.equal(cmd.description, "Handles /approve. NB /approve-bypass belongs to approve-bot.");
+
+  const only = `
+on: issue_comment
+jobs:
+  a:
+    if: contains(github.event.comment.body, '/approve')
+    # /approve-bypass is a different command
+`;
+  assert.equal(extractSlashCommands([{ path: "b.yml", text: only }])[0].description, "");
+});
+
 test("a command owned by two workflows is listed once", () => {
   const a = `on: issue_comment\njobs:\n  a:\n    if: contains(github.event.comment.body, '/x')`;
   const b = `on: issue_comment\njobs:\n  b:\n    if: contains(github.event.comment.body, '/x')`;

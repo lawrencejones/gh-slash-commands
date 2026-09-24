@@ -4,6 +4,8 @@ A Chrome extension that autocompletes the `/commands` a repository's GitHub Acti
 workflows respond to, in pull request and issue comment boxes. Type `/` at the start
 of a line and pick from the list.
 
+![Typing / in a PR comment box shows the repository's workflow commands, each with the workflow that owns it and a one-line description](docs/screenshot.png)
+
 It reads `.github/workflows/*.yml` through your github.com session, so private repos
 work with no token, and finds commands in:
 
