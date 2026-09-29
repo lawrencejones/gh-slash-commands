@@ -46,6 +46,15 @@ move it afterwards.
 Works the same in Arc, Brave, Edge and other Chromium browsers; the extensions page
 is `arc://extensions`, `brave://extensions` or `edge://extensions`.
 
+**Firefox (temporary)**
+
+1. Open `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on** and choose `manifest.json` in the
+   `gh-slash-commands` folder.
+
+Firefox removes temporary add-ons when it restarts, so you'll need to load it again
+each time. The options page is under `about:addons`.
+
 **3. Try it**
 
 Open any pull request on github.com and type `/` at the start of a line in the
