@@ -11,7 +11,7 @@ mkdir -p dist
 rm -f "$out"
 zip -q -X "$out" \
   manifest.json \
-  parser.js fetcher.js content.js content.css \
+  parser.js fetcher.js field.js content.js content.css \
   options.html options.js \
   icons/icon-16.png icons/icon-32.png icons/icon-48.png icons/icon-128.png
 

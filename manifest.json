@@ -12,7 +12,7 @@
   "content_scripts": [
     {
       "matches": ["https://github.com/*"],
-      "js": ["parser.js", "fetcher.js", "content.js"],
+      "js": ["parser.js", "fetcher.js", "field.js", "content.js"],
       "css": ["content.css"],
       "run_at": "document_idle"
     }
