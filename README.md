@@ -86,7 +86,7 @@ matches and comes back when it closes.
 ## Develop
 
 ```bash
-node --test test/
+node --test test/*.test.js
 ```
 
 The last test runs the parser over a sibling `../core/.github/workflows` checkout if
