@@ -57,7 +57,10 @@
     if (el.classList.contains("js-comment-field")) return true;
     if (/\[body\]$/.test(el.name || "")) return true;
     if (el.closest("text-expander, .CommentBox, [data-testid*='comment' i], [class*='CommentBox']")) return true;
-    return /comment|reply|review/i.test(el.getAttribute("aria-label") || el.placeholder || "");
+    return (
+      /comment|reply|review/i.test(el.getAttribute("aria-label") || "") ||
+      /comment|reply|review/i.test(el.placeholder || "")
+    );
   }
 
   // --- Popup -----------------------------------------------------------------------
